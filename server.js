@@ -4,7 +4,13 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+// Configurar CORS para aceitar requisições do frontend
+app.use(cors({
+  origin: "https://nota-alta.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
